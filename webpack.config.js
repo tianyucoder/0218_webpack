@@ -72,7 +72,29 @@ module.exports = {
               outputPath:'img',//图片最终输出的位置
               publicPath:'../img',//css资源图片路径
               name:'[hash:5].[ext]',  //修改图片名称
-              limit: 8192 //当图片小于8k的时，转base64
+              limit: 8192 //当图片小于8K的时，转base64
+            }
+          }
+        ]
+      },
+      //4.js语法检查
+      {
+        test: /.js/,
+        enforce: 'pre',//预先加载好语法检查工具
+        exclude: /node_modules/, //跳过node_modules文件夹
+        use: [
+          {
+            loader: `jshint-loader`,
+            options: {
+              //jslint的错误信息在默认情况下会显示为 warning（警告）类信息
+              //将 emitErrors 参数设置为 true 可使错误显示为 error（错误）类信息
+              emitErrors: true,
+
+              //jshint 默认情况下不会打断webpack编译
+              //如果你想在 jshint 出现错误时，立刻停止编译
+              //请设置 failOnHint 参数为true
+              failOnHint: false,
+              esversion: 6
             }
           }
         ]

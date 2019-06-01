@@ -86,7 +86,7 @@ console.log(Object(__WEBPACK_IMPORTED_MODULE_0__module1__["a" /* add */])(100,10
 console.log(Object(__WEBPACK_IMPORTED_MODULE_0__module1__["b" /* mul */])(3,3));
 console.log(Object(__WEBPACK_IMPORTED_MODULE_1__module2__["a" /* sum */])(1,2,3,4,5,6));
 
-console.log(__WEBPACK_IMPORTED_MODULE_2__json_data_json___default.a,typeof __WEBPACK_IMPORTED_MODULE_2__json_data_json___default.a)
+console.log(__WEBPACK_IMPORTED_MODULE_2__json_data_json__["default"],typeof __WEBPACK_IMPORTED_MODULE_2__json_data_json__["default"]);
 
 /***/ }),
 /* 1 */
@@ -125,7 +125,7 @@ function sum(...args) {
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = {"name":"jack","age":28}
+throw new Error("Module parse failed: Unexpected token (2:8)\nYou may need an appropriate loader to handle this file type.\n| {\r\n|   \"name\":\"jack\",\r\n|   \"age\":28\r\n| }");
 
 /***/ }),
 /* 4 */
