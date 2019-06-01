@@ -16,6 +16,10 @@
 const {resolve} = require('path');
 //引入extract-text-webpack-plugin提取css为单独文件
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
+//引入HtmlWebpackPlugin，生成html文件
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//清空指定目录
+const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   //入口（从哪里进入开始解析）
@@ -88,7 +92,7 @@ module.exports = {
             options: {
               //jslint的错误信息在默认情况下会显示为 warning（警告）类信息
               //将 emitErrors 参数设置为 true 可使错误显示为 error（错误）类信息
-              emitErrors: true,
+              emitErrors: false,
 
               //jshint 默认情况下不会打断webpack编译
               //如果你想在 jshint 出现错误时，立刻停止编译
@@ -98,6 +102,17 @@ module.exports = {
             }
           }
         ]
+      },
+      //5.babel-loader语法转换
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015']
+          }
+        }
       }
     ]
   },
@@ -105,7 +120,13 @@ module.exports = {
   //配置所有的plugins
   plugins: [
     //提取css为单独文件
-   new ExtractTextPlugin("./css/index.css"),
+    new ExtractTextPlugin("./css/index.css"),
+    new HtmlWebpackPlugin({
+      title:"0218",//对应hrml中的title标签
+      filename:"index.html",//生成html文件的名字
+      template:"./src/index.html"//参照的模板
+    }),
+    new CleanWebpackPlugin()
   ]
 
 };

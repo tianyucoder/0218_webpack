@@ -65,70 +65,70 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__module1__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__module2__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__json_data_json__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__json_data_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__json_data_json__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__less_demo_less__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__less_demo_less___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__less_demo_less__);
 
 
+var _module = __webpack_require__(1);
 
+var _module2 = __webpack_require__(2);
 
+__webpack_require__(3);
 
-
-console.log(Object(__WEBPACK_IMPORTED_MODULE_0__module1__["a" /* add */])(2,3));
-console.log(Object(__WEBPACK_IMPORTED_MODULE_0__module1__["a" /* add */])(100,100));
-console.log(Object(__WEBPACK_IMPORTED_MODULE_0__module1__["b" /* mul */])(3,3));
-console.log(Object(__WEBPACK_IMPORTED_MODULE_1__module2__["a" /* sum */])(1,2,3,4,5,6));
-
-console.log(__WEBPACK_IMPORTED_MODULE_2__json_data_json__["default"],typeof __WEBPACK_IMPORTED_MODULE_2__json_data_json__["default"]);
+console.log((0, _module.add)(2, 3));
+console.log((0, _module.add)(100, 100));
+console.log((0, _module.mul)(3, 3));
+console.log((0, _module2.sum)(1, 2, 3, 4, 5, 6));
+setTimeout(function () {}, 200);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mul; });
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
 //定义一个加法
-function add(x,y) {
-  return x+y;
+function add(x, y) {
+  return x + y;
 }
 
 //定义一个乘法
-function mul(x,y) {
-  return x*y;
+function mul(x, y) {
+  return x * y;
 }
 
-
+exports.add = add;
+exports.mul = mul;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["a"] = sum;
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.sum = sum;
 //定义一个求和方法
-function sum(...args) {
-  return args.reduce((pre,now)=>{
-    return pre+now;
+function sum() {
+  for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  return args.reduce(function (pre, now) {
+    return pre + now;
   });
 }
 
-
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
-
-throw new Error("Module parse failed: Unexpected token (2:8)\nYou may need an appropriate loader to handle this file type.\n| {\r\n|   \"name\":\"jack\",\r\n|   \"age\":28\r\n| }");
-
-/***/ }),
-/* 4 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
