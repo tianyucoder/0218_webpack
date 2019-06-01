@@ -76,7 +76,7 @@ var _module2 = __webpack_require__(2);
 
 __webpack_require__(3);
 
-console.log((0, _module.add)(2, 3));
+console.log((0, _module.add)(2, 1));
 console.log((0, _module.add)(100, 100));
 console.log((0, _module.mul)(3, 3));
 console.log((0, _module2.sum)(1, 2, 3, 4, 5, 6));

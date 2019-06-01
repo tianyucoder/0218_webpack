@@ -18,8 +18,6 @@ const {resolve} = require('path');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 //引入HtmlWebpackPlugin，生成html文件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//清空指定目录
-const CleanWebpackPlugin = require('clean-webpack-plugin')
 
 module.exports = {
   //入口（从哪里进入开始解析）
@@ -27,31 +25,14 @@ module.exports = {
 
   //出口（最终加工完的代码输出到哪里）
   output: {// 输出配置
-    path: resolve(__dirname, 'build'),//输出文件路径配置
+    path: resolve(__dirname, '../build'),//输出文件路径配置
     filename: 'index.js',// 输出文件名
   },
 
   //配置所有loader
   module: {
     rules: [
-      //1.less-loader将less转换为css
-      /*{
-        test: /\.less$/,
-        use: [{
-          loader: 'style-loader' //通过js动态向页面中构建一个style标签，并且将css样式注入
-        }, {
-          loader: 'css-loader' //将css转换为CommonJs的模块
-        }, {
-          loader: 'less-loader' //将less编译为css
-        }]
-      },*/
-      {
-        test: /\.less$/, //匹配文件的规则，说明该loader对哪个文件生效
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: ["css-loader","less-loader"]
-        })
-      },
+
       //2.file-loader处理图片资源
       /*{
         test: /\.(png|jpg|gif)$/,
@@ -119,14 +100,11 @@ module.exports = {
 
   //配置所有的plugins
   plugins: [
-    //提取css为单独文件
-    new ExtractTextPlugin("./css/index.css"),
     new HtmlWebpackPlugin({
       title:"0218",//对应hrml中的title标签
       filename:"index.html",//生成html文件的名字
       template:"./src/index.html"//参照的模板
     }),
-    new CleanWebpackPlugin()
   ]
 
 };

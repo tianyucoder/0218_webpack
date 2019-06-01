@@ -1,10 +1,10 @@
 html,
 body {
-  background-color: gray;
+  background-color: skyblue;
 }
 html .title,
 body .title {
-  background-color: red;
+  background-color: orange;
 }
 html .test1,
 body .test1 {
