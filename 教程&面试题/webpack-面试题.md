@@ -23,7 +23,7 @@
 	1). loader: 用于加载特定类型的资源文件, webpack本身只能打包js。
 	2). plugin: 用来扩展webpack其它方面的功能, 一般loader处理不了的资源、完成不了的操作交给插件处理。
 
-###5.区别live-reload（自动刷新加载）与hot-realod/HMR（热模替换）
+###5.区别live-reload（自动刷新）与hot-realod/HMR（热模替换）
 	相同点: 
 		代码修改后都会自动重新编译打包
 	不同点: 
