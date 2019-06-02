@@ -12,42 +12,28 @@
  *  问题：这种方式只能够编译打包js、json文件，其他文件处理不了
  * 5.webpack --display-modules可以查看隐藏的任务
  */
-//path内置的模块，用来设置路径。
+
+//引入内置的path模块，用来设置路径。
 const {resolve} = require('path');
-//引入extract-text-webpack-plugin提取css为单独文件
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-//引入HtmlWebpackPlugin，生成html文件
+//引入HtmlWebpackPlugin插件，生成html文件
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  //入口（从哪里进入开始解析）
+
+  //入口（告诉webpack从哪里进入开始解析）
   entry:'./src/js/index.js',
 
-  //出口（最终加工完的代码输出到哪里）
-  output: {// 输出配置
+  //输出（最终加工完的代码输出到哪里）
+  output: {
+    //输出配置
     path: resolve(__dirname, '../build'),//输出文件路径配置
     filename: 'index.js',// 输出文件名
   },
 
-  //配置所有loader
+  //在这里配置所有loader
   module: {
     rules: [
-
-      //2.file-loader处理图片资源
-      /*{
-        test: /\.(png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              outputPath:'img',//图片最终输出的位置
-              publicPath:'../build/img',//css资源图片路径
-              name:'[hash:5].[ext]'  //修改图片名称
-            },
-          },
-        ],
-      },*/
-      //3.使用url-loader使图片转base64
+      //使用url-loader将图片转base64编码
       {
         test: /\.(png|jpg|gif)$/i,
         use: [
@@ -62,7 +48,7 @@ module.exports = {
           }
         ]
       },
-      //4.js语法检查
+      //使用jshint-loader进行js语法检查
       {
         test: /.js/,
         enforce: 'pre',//预先加载好语法检查工具
@@ -71,20 +57,30 @@ module.exports = {
           {
             loader: `jshint-loader`,
             options: {
-              //jslint的错误信息在默认情况下会显示为 warning（警告）类信息
-              //将 emitErrors 参数设置为 true 可使错误显示为 error（错误）类信息
+              /*
+                jslint的错误信息在默认情况下会显示为 warning（警告）类信息
+                  -- emitErrors为true，检查出的错误显示为 error（错误）类信息。
+                  -- emitErrors为false，检查出的错误显示为 warning（错误）类信息。
+              */
               emitErrors: false,
 
-              //jshint 默认情况下不会打断webpack编译
-              //如果你想在 jshint 出现错误时，立刻停止编译
-              //请设置 failOnHint 参数为true
+              /*
+                注意：jshint默认情况下不会打断webpack编译，即：failOnHint默认值为false
+                    -- failOnHint为true，当jshint检查出错误时，直接打断当前的代码的编译。
+                    -- failOnHint为false，当jshint检查出错误时，会继续编译。
+              */
               failOnHint: false,
-              esversion: 6
+
+              /*
+              告诉jshint，不在提示新语法兼容性问题
+              */
+              esversion: 6,
+
             }
           }
         ]
       },
-      //5.babel-loader语法转换
+      //使用babel-loader将es6语法转为es5
       {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
@@ -94,14 +90,21 @@ module.exports = {
             presets: ['es2015']
           }
         }
+      },
+      //使用json-loader处理json文件
+      {
+        test: /\.json$/,
+        use: {
+          loader: 'json-loader'
+        }
       }
     ]
   },
 
-  //配置所有的plugins
+  //在这里配置所有的plugins
   plugins: [
     new HtmlWebpackPlugin({
-      title:"0218",//对应hrml中的title标签
+      title:"0218",//对应html中的title标签
       filename:"index.html",//生成html文件的名字
       template:"./src/index.html"//参照的模板
     }),
