@@ -62,7 +62,7 @@ module.exports = {
                   -- emitErrors为true，检查出的错误显示为 error（错误）类信息。
                   -- emitErrors为false，检查出的错误显示为 warning（错误）类信息。
               */
-              emitErrors: false,
+              emitErrors: true,
 
               /*
                 注意：jshint默认情况下不会打断webpack编译，即：failOnHint默认值为false
@@ -75,6 +75,13 @@ module.exports = {
               告诉jshint，不在提示新语法兼容性问题
               */
               esversion: 6,
+
+              /*
+              * 自定义一个错误报告函数（当出现错误时，自动注入错误信息）
+              * */
+              /*reporter:function(err){
+                console.log(err)
+              }*/
 
             }
           }
