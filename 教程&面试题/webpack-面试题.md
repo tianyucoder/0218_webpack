@@ -68,6 +68,10 @@
 				 title:"webpack",
 			     filename:"index.html",
 			     template:"./src/index.html"
+			     //用于压缩html
+			      minify:{
+                         removeComments:true, //移除注释
+                         collapseWhitespace:true}//移除换行
 		3.【clean-webpack-plugin】：清空webpack的输出目录，防止其他文件“乱入”。
 		4.【HotModuleReplacementPlugin】：热模替换（HMR）插件
 				备注：1.该模块必须配合webpack-dev-server模块使用，且webpack-dev-server中必须启用HMR
